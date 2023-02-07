@@ -5,7 +5,7 @@ const axios = require("axios")
 
 const app = express().use(parser.json())
 
-const token = "EAAaY9i6XqwkBAAUEbXeMOIZCo7Pwa2DBJW2dpb79KHX4ce7xrjsQDWHhrWZCcVxX8MNqTsn1tCXIsNYk1TuRPc6pAAGN0AAJ3oGYiEi14WUobYDotVxUj9DqJcXZAxLawwO1pzrAS5krHiqAjgN1ZB6ryIYZCCfq90Xh3IvlLWR95ja55yFfJXgGKZCYGYICJ1UWANkERg4QZDZD";
+const token = "EAAaY9i6XqwkBAFZApnVaUCPUth3QUn9GXtViVrxTEksaDTcKeeMV0XtxzBgXmoapxZCjARN8Y1T4uy98fbmE5BZCj2GFPUGIh7hHBqHZCjZAzzPm0OJTHZAoQetY2OlrvAFj6tCVEhORba4rQXurK3hJT0F3mEbnqq3nZCy1BpOQlBPLCkAD3wvrtX2w3nyJbwqqmeaClbCawZDZD";
 const myToken = "aditya"
 
 app.listen(8000, ()=>{
@@ -16,10 +16,10 @@ app.listen(8000, ()=>{
 app.get("/", (req,res)=>{
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
-    let token = req.query["hub.verify_token"];
+    let tokenf = req.query["hub.verify_token"];
 
     if(mode && token){
-        if(mode == "subscribe" && token == myToken){
+        if(mode == "subscribe" && tokenf == myToken){
             res.status(200).send(challenge);
         }else{
             res.status(403);
