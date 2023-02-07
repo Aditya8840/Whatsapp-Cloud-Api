@@ -1,6 +1,7 @@
 const express = require("express")
 const parser = require("body-parser")
 const axios = require("axios")
+const serverless = require('serverless-http')
 
 
 const app = express().use(parser.json())
@@ -56,16 +57,18 @@ app.post("/webhook", (req,res)=>{
                 "Content-Type":"application/json"
             }
         });
-         res.sendStatus (200);
+         res.status(200);
     }else{
-            res.sendStatus(404);
+            res.status(404);
         }
     }
         
 })
 
-// app.get("/", (req, res)=>{
-//     res.status(200).send("Hello....")
-// })
+app.get("/", (req, res)=>{
+    res.status(200).send("Hello....")
+})
+
+// module.exports.handler = serverless(app);
 
 //6:18
