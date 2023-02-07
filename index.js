@@ -13,7 +13,7 @@ app.listen(8000, ()=>{
 });
 
 
-app.get("/", (req,res)=>{
+app.get("/webhook", (req,res)=>{
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
     let tokenf = req.query["hub.verify_token"];
@@ -28,7 +28,7 @@ app.get("/", (req,res)=>{
 })
 
 
-app.post("/", (req,res)=>{
+app.post("/webhook", (req,res)=>{
     let body_param = req.body;
 
     console.log(JSON.stringify(body_param, null, 2));
