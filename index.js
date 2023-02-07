@@ -4,6 +4,9 @@ const parser = require("body-parser")
 
 const app = express().use(parser.json())
 
+const token = "EAAaY9i6XqwkBAAUEbXeMOIZCo7Pwa2DBJW2dpb79KHX4ce7xrjsQDWHhrWZCcVxX8MNqTsn1tCXIsNYk1TuRPc6pAAGN0AAJ3oGYiEi14WUobYDotVxUj9DqJcXZAxLawwO1pzrAS5krHiqAjgN1ZB6ryIYZCCfq90Xh3IvlLWR95ja55yFfJXgGKZCYGYICJ1UWANkERg4QZDZD";
+const myToken = "aditya"
+
 app.listen(8000, ()=>{
     console.log("listening")
 });
@@ -13,9 +16,6 @@ app.get("/webhook", (req,res)=>{
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
     let token = req.query["hub.verify_token"];
-
-
-    myToken = "aditya";
 
     if(mode && token){
         if(mode == "subscribe" && token == myToken){
@@ -59,5 +59,6 @@ app.post("/webhook", (req,res)=>{
     }else{
             res.sendStatus(404);
         }
+    }
         
 })
