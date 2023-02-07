@@ -20,9 +20,9 @@ app.get("/webhook", (req,res)=>{
 
     if(mode && token){
         if(mode == "subscribe" && token == myToken){
-            req.status(200).send(challenge);
+            res.status(200).send(challenge);
         }else{
-            req.status(403);
+            res.status(403);
         }
     }
 })
@@ -44,7 +44,7 @@ app.post("/webhook", (req,res)=>{
    
         axios({
             method: "POST",
-            url: "https://graph. facebook. com/v13.0/"+phon_no_id+"/message7access_tokens"+token,
+            url: "https://graph.facebook.com/v13.0/"+phon_no_id+"/message7access_tokens"+token,
             data:{
                 messaging_product: "whatsapp",
                 to:from,
@@ -62,4 +62,8 @@ app.post("/webhook", (req,res)=>{
         }
     }
         
+})
+
+app.get("/", (req, res)=>{
+    res.status(200).send("Hello....")
 })
